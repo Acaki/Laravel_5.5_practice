@@ -64,9 +64,12 @@
 
                         <div class="form-group row">
                             <div class="col-lg-8 offset-lg-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
+                                <div class="btn-group" role="group">
+                                    <button type="submit" class="btn btn-primary">
+                                        Login
+                                    </button>
+                                    <a href="{{url('/redirect')}}" class="btn btn-danger ml-3">Login with Google</a>
+                                </div>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?

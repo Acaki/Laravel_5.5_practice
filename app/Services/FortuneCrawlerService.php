@@ -44,7 +44,7 @@ class FortuneCrawlerService
         );
     }
 
-    public function getLinks($html)
+    public function getLinks($html, $date = '')
     {
         $this->crawler->clear();
         $this->crawler->addHtmlContent($html);
@@ -54,7 +54,7 @@ class FortuneCrawlerService
             $constellation = $link->getNode()->textContent;
             $query = parse_url($link->getUri(), PHP_URL_QUERY);
             parse_str($query, $output);
-            $uris[$constellation] = $output['RedirectTo'];
+            $uris[$constellation] = "{$output['RedirectTo']}&iAcDay={$date}";
         }
 
         return $uris;

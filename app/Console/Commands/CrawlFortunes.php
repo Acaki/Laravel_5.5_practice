@@ -14,7 +14,7 @@ class CrawlFortunes extends Command
      *
      * @var string
      */
-    protected $signature = 'fortunes:crawl';
+    protected $signature = 'fortunes:crawl {date?}';
 
     /**
      * The console command description.
@@ -54,7 +54,7 @@ class CrawlFortunes extends Command
         } catch (\Exception $e) {
             die($e->getMessage());
         }
-        $links = $this->fortuneCrawlerService->getLinks($body);
+        $links = $this->fortuneCrawlerService->getLinks($body, $this->argument('date'));
         $contents = $this->fortuneFetcherService->fetchChildren($links);
         foreach ($contents as $constellation => $content) {
             $info = $this->fortuneCrawlerService->getFortuneInfo($content);

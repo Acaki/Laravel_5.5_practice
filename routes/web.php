@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,4 +26,7 @@ Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/crawl', function (Request $request) {
+    Artisan::call('fortunes:crawl', ['date' => $request->get('date')]);
+});
 

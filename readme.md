@@ -52,18 +52,20 @@ create table fortunes
 	updated_at datetime,
 	constellation varchar not null,
 	date date not null,
-	overall_fortune_score varchar not null,
+	overall_fortune_score integer not null,
 	overall_fortune_description varchar not null,
-	love_fortune_score varchar not null,
+	love_fortune_score integer not null,
 	love_fortune_description varchar not null,
-	career_fortune_score varchar not null,
+	career_fortune_score integer not null,
 	career_fortune_description varchar not null,
-	wealth_fortune_score varchar not null,
+	wealth_fortune_score integer not null,
 	wealth_fortune_description varchar not null
 );
 
 create index fortunes_constellation_date_index
 	on fortunes (constellation, date);
+
+
 
 
 ```

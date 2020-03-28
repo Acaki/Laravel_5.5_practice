@@ -18,13 +18,13 @@ class CreateFortunesTable extends Migration
             $table->timestamps();
             $table->string('constellation');
             $table->date('date');
-            $table->string('overall_fortune_score');
+            $table->integer('overall_fortune_score');
             $table->string('overall_fortune_description');
-            $table->string('love_fortune_score');
+            $table->integer('love_fortune_score');
             $table->string('love_fortune_description');
-            $table->string('career_fortune_score');
+            $table->integer('career_fortune_score');
             $table->string('career_fortune_description');
-            $table->string('wealth_fortune_score');
+            $table->integer('wealth_fortune_score');
             $table->string('wealth_fortune_description');
             $table->index(['constellation', 'date']);
         });

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Fortunes;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
@@ -18,11 +22,16 @@ class HomeController extends Controller
 
     /**
      * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Factory|Application|View
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        $date = $request->get('date') ? : date('Y-m-d');
+        return view('home', [
+            'selectedDate' => $date,
+            'availableDates' => Fortunes::select('date')->groupBy('date')->pluck('date'),
+            'fortunes' => Fortunes::where('date', $date)->get()]
+        );
     }
 }
